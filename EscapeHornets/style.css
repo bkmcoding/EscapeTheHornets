@@ -1,0 +1,183 @@
+@import url('https://fonts.cdnfonts.com/css/hero-4');
+@import url('https://fonts.cdnfonts.com/css/stella-nova');
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    font-family: 'Stella Nova', sans-serif;
+    overflow-y: none;
+    overflow-x: none;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100vh;
+}
+
+body {
+    background-color: rgb(17, 17, 17);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.container {
+    pointer-events: none;
+}
+
+#menu {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+}
+
+.hide {
+    display: none;
+}
+
+#game-title {
+    font-family: 'Stella Nova', sans-serif;
+    color: white;
+    text-align: center;
+    margin-top: 25vh;
+    font-size: 4em;
+}
+
+#game-start {
+    font-family: 'Stella Nova', sans-serif;
+    background-image: radial-gradient(100% 100% at 100% 0%, rgba(14, 65, 231, 0.2), transparent),
+        radial-gradient(100% 100% at 0% 100%, rgba(235, 232, 247, 0.8), transparent);
+    border-radius: 20px;
+    font-size: 2.5em;
+    margin-left: calc(50vw - 12.5vw);
+    margin-top: 10vh;
+    width: 25vw;
+    height: 8vh;
+}
+
+#pulse {
+    box-shadow: inset 0px 0px 50px 5px rgba(204, 44, 44, 0.4);
+    animation: pulse 1s infinite;
+}
+
+#shake {
+    animation: shake 0.5s;
+}
+
+#player {
+    --playerX: 50;
+    --playerY: 50;
+
+    position: absolute;
+    background-color: aliceblue;
+    left: calc(var(--playerX) * 1vw);
+    top: calc(var(--playerY) * 1vh);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    width: 2.5vh;
+    height: 2.5vh;
+}
+
+.enemy {
+    position: absolute;
+    background-color: red;
+
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    width: 8vh;
+    height: 8vh;
+    background-image: url('assets/dylancrop.webp');
+    background-size: contain;
+}
+
+#boss {
+    width: 20vh;
+    height: 20vh;
+    background-image: url('assets/dylanangry.webp');
+    background-size: contain;
+}
+
+.score {
+    display: flex;
+    justify-content: center;
+    font-size: 4vh;
+    color: white;
+}
+
+.highScoreContainer {
+    position: absolute;
+    top: 1vh;
+    left: 1vw;
+    font-size: 3vh;
+    color: white;
+}
+
+/* Animations */
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-box-shadow: inset 0px 0px 50px 5px rgba(204, 44, 44, 0.4);
+    }
+    70% {
+        -webkit-box-shadow: inset 0px 0px 50px 10px rgba(204, 44, 44, 0.4);
+    }
+    100% {
+        -webkit-box-shadow: inset 0px 0px 50px 5px rgba(204, 44, 44, 0.4);
+    }
+}
+@keyframes pulse {
+    0% {
+        -moz-box-shadow: inset 0px 0px 50px 5px rgba(204, 44, 44, 0.4);
+        box-shadow: inset 0px 0px 50px 5px rgba(204, 44, 44, 0.4);
+    }
+    70% {
+        -moz-box-shadow: inset 0px 0px 50px 10px rgba(204, 44, 44, 0.4);
+        box-shadow: inset 0px 0px 50px 20px rgba(204, 44, 44, 0.4);
+    }
+    100% {
+        -moz-box-shadow: inset 0px 0px 50px 5px rgba(204, 44, 44, 0.4);
+        box-shadow: inset 0px 0px 50px 5px rgba(204, 44, 44, 0.4);
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}
