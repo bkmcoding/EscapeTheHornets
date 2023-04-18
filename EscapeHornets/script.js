@@ -203,7 +203,6 @@ function countSeconds() {
 
 function setHighScore(score) {
     let highScore = document.querySelector('#high-score');
-
     if (score > highScore.innerHTML) {
         highScore.innerHTML = score - 1;
     }
@@ -217,6 +216,8 @@ function resetPage() {
     container.removeAttribute('id', 'shake');
     menu.removeAttribute('class', 'hide');
     gameStart = 0;
+    clearInterval(countSecondsInterval);
+    clearInterval(spawnEnemiesInterval);
 }
 
 function gameOver() {
@@ -229,6 +230,7 @@ function gameOver() {
     score.innerHTML = totalSeconds;
     enemyCount = 0;
     bossSpawned = false;
-
+    clearInterval(countSecondsInterval);
+    clearInterval(spawnEnemiesInterval);
     spawnEnemies();
 }
