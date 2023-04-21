@@ -5,8 +5,10 @@ const enemySpeed = 0.01;
 let lastTime = 0;
 let totalSeconds = 0;
 let enemyCount = 0;
+let xyMultiplier = window.innerWidth / window.innerHeight;
 let gameStart = false;
 let bossSpawned = false;
+console.log(xyMultiplier);
 
 const player = new Player(document.getElementById('player'));
 const enemyArray = [];
@@ -215,9 +217,6 @@ function resetPage() {
     body.removeAttribute('id', 'pulse');
     container.removeAttribute('id', 'shake');
     menu.removeAttribute('class', 'hide');
-    gameStart = 0;
-    clearInterval(countSecondsInterval);
-    clearInterval(spawnEnemiesInterval);
 }
 
 function gameOver() {
@@ -229,6 +228,7 @@ function gameOver() {
     totalSeconds = 0;
     score.innerHTML = totalSeconds;
     enemyCount = 0;
+    gameStart = 0;
     bossSpawned = false;
     clearInterval(countSecondsInterval);
     clearInterval(spawnEnemiesInterval);
