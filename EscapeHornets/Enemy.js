@@ -45,22 +45,6 @@ export default class Enemy {
         }
     }
 
-    // move(delta, playerX, playerY, closestenemyX, closestenemyY) {
-    //     let distanceX = playerX - this.x;
-    //     let distanceY = playerY - this.y;
-    //     var length = Math.sqrt(distanceX ** 2 + distanceY ** 2);
-    //     if (length) {
-    //         distanceX /= length;
-    //         distanceY /= length;
-    //     }
-
-    //     this.x -= closestenemyX * delta * (speed * 0.5);
-    //     console.log(closestenemyX * delta * (speed * 0.5));
-    //     this.y -= closestenemyY * delta * (speed * 0.5);
-    //     this.x += distanceX * delta * speed;
-    //     this.y += distanceY * delta * speed;
-    // }
-
     chasePlayer(playerX, playerY) {
         let distanceX = playerX - this.x;
         let distanceY = playerY - this.y;
