@@ -52,6 +52,7 @@ start.addEventListener('click', function () {
     gameMusic.play();
     countSecondsInterval;
     spawnEnemiesInterval;
+    totalSeconds = 0;
 });
 
 window.addEventListener('keydown', keyDownListener, false);
@@ -65,40 +66,44 @@ function keyUpListener(event) {
 }
 
 function spawnEnemies() {
-    const enemyContainer = document.querySelector('.enemies');
-    const createEnemy = document.createElement('div');
-    createEnemy.setAttribute('class', `enemy enemy${enemyCount}`);
-    createEnemy.setAttribute(
-        'style',
-        `--enemyX${enemyCount}: 0; --enemyY${enemyCount}: 0; left: calc(var(--enemyX${enemyCount}) * 1vw); top: calc(var(--enemyY${enemyCount}) * 1vh);`
-    );
-    enemyContainer.append(createEnemy);
-    let enemy = new Enemy(document.querySelector(`.enemy${enemyCount}`), enemyCount);
-    enemyArray.push(enemy);
-    enemyCount++;
-    enemy.reset();
+    if ((gameStart = true)) {
+        const enemyContainer = document.querySelector('.enemies');
+        const createEnemy = document.createElement('div');
+        createEnemy.setAttribute('class', `enemy enemy${enemyCount}`);
+        createEnemy.setAttribute(
+            'style',
+            `--enemyX${enemyCount}: 0; --enemyY${enemyCount}: 0; left: calc(var(--enemyX${enemyCount}) * 1vw); top: calc(var(--enemyY${enemyCount}) * 1vh);`
+        );
+        enemyContainer.append(createEnemy);
+        let enemy = new Enemy(document.querySelector(`.enemy${enemyCount}`), enemyCount);
+        enemyArray.push(enemy);
+        enemyCount++;
+        enemy.reset();
+    }
 }
 
 function spawnBoss() {
-    bossSpawning();
-    let bossMusic = document.querySelector('#bossMusic');
-    const enemyContainer = document.querySelector('.enemies');
-    const createEnemy = document.createElement('div');
-    createEnemy.setAttribute('class', `enemy enemy${enemyCount}`);
-    createEnemy.setAttribute('id', `boss`);
-    createEnemy.setAttribute(
-        'style',
-        `--enemyX${enemyCount}: 0; --enemyY${enemyCount}: 0; left: calc(var(--enemyX${enemyCount}) * 1vw); top: calc(var(--enemyY${enemyCount}) * 1vh);`
-    );
-    enemyContainer.append(createEnemy);
-    let enemy = new Enemy(document.querySelector(`.enemy${enemyCount}`), enemyCount);
-    enemyArray.push(enemy);
-    enemyCount++;
-    enemy.reset();
-    let bossCount = enemyCount;
-    gameMusic.pause();
-    bossMusic.play();
-    return bossCount;
+    if ((gameStart = true)) {
+        bossSpawning();
+        let bossMusic = document.querySelector('#bossMusic');
+        const enemyContainer = document.querySelector('.enemies');
+        const createEnemy = document.createElement('div');
+        createEnemy.setAttribute('class', `enemy enemy${enemyCount}`);
+        createEnemy.setAttribute('id', `boss`);
+        createEnemy.setAttribute(
+            'style',
+            `--enemyX${enemyCount}: 0; --enemyY${enemyCount}: 0; left: calc(var(--enemyX${enemyCount}) * 1vw); top: calc(var(--enemyY${enemyCount}) * 1vh);`
+        );
+        enemyContainer.append(createEnemy);
+        let enemy = new Enemy(document.querySelector(`.enemy${enemyCount}`), enemyCount);
+        enemyArray.push(enemy);
+        enemyCount++;
+        enemy.reset();
+        let bossCount = enemyCount;
+        gameMusic.pause();
+        bossMusic.play();
+        return bossCount;
+    }
 }
 
 function bossSpawning() {
@@ -196,11 +201,13 @@ function moveAllEnemy(delta, playerX, playerY) {
 }
 
 function countSeconds() {
-    ++totalSeconds;
-    let score = document.getElementById('score');
-    score.innerHTML = totalSeconds;
+    if ((gameStart = true)) {
+        ++totalSeconds;
+        let score = document.getElementById('score');
+        score.innerHTML = totalSeconds;
 
-    return score.innerHTML;
+        return score.innerHTML;
+    }
 }
 
 function setHighScore(score) {
@@ -228,9 +235,6 @@ function gameOver() {
     totalSeconds = 0;
     score.innerHTML = totalSeconds;
     enemyCount = 0;
-    gameStart = 0;
+    gameStart = false;
     bossSpawned = false;
-    clearInterval(countSecondsInterval);
-    clearInterval(spawnEnemiesInterval);
-    spawnEnemies();
 }
