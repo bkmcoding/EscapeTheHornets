@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <link rel="stylesheet" href="/EscapeHornets/style.css" />
-        <script async src="/EscapeHornets/script.js" type="module"></script>
-    </head>
-    <body>
-        <audio id="battleMusic" src="/EscapeHornets/assets/OnysTension.mp3"></audio>
-        <audio id="bossMusic" src="/EscapeHornets/assets/DeathOnTheBattlefield.mp3"></audio>
-        <div id="menu">
-            <div class="start">
-                <div id="game-title">Escape the Hornets</div>
-                <button id="game-start">Start</button>
-            </div>
-            <!-- <div class="restart">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script async src="script.js" type="module"></script>
+  </head>
+  <body>
+    <audio id="battleMusic" src="/EscapeHornets/assets/OnysTension.mp3"></audio>
+    <audio
+      id="bossMusic"
+      src="/EscapeHornets/assets/DeathOnTheBattlefield.mp3"
+    ></audio>
+    <div id="menu">
+      <div class="start">
+        <div id="game-title">Escape the Hornets</div>
+        <button id="game-start">Start</button>
+      </div>
+      <!-- <div class="restart">
                 <div id="game-title">Escape the Hornets</div>
                 <button id="game-start">Start</button>
             </div> -->
-        </div>
-        <div class="container">
-            <div class="score">
-                <div id="score">0</div>
-            </div>
-            <div class="highScoreContainer">
-                High Score:
-                <span id="high-score">0</span>
-            </div>
-            <div id="player"></div>
-            <div class="enemies">
-                <div
-                    class="enemy enemy0"
-                    style="
-                        --enemyX0: 0;
-                        --enemyY0: 0;
-                        left: calc(var(--enemyX0) * 1vw);
-                        top: calc(var(--enemyY0) * 1vh);
-                    "></div>
-            </div>
-        </div>
-    </body>
+    </div>
+    <div class="container">
+      <div class="score">
+        <div id="score">0</div>
+      </div>
+      <div class="highScoreContainer">
+        High Score:
+        <span id="high-score">0</span>
+      </div>
+      <div id="player"></div>
+      <div class="enemies">
+        <div
+          class="enemy enemy0"
+          style="
+            --enemyX0: 0;
+            --enemyY0: 0;
+            left: calc(var(--enemyX0) * 1vw);
+            top: calc(var(--enemyY0) * 1vh);
+          "
+        ></div>
+      </div>
+    </div>
+  </body>
 </html>
